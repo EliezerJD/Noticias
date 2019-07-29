@@ -42,7 +42,8 @@ public class VerActivity extends AppCompatActivity {
         description.setText(getIntent().getStringExtra("description"));
         userName.setText(usernameT);
         System.out.println(imageUrl);
-        Picasso.with(VerActivity.this).load("http://192.168.1.65/apiFotos"+imageUrl).into(img);
+        //Picasso.with(VerActivity.this).load("http://192.168.1.65/apiFotos"+imageUrl).into(img);
+        Picasso.with(VerActivity.this).load(Connection.IP+"/apiFotos"+imageUrl).into(img);
     }
 
     public void volver(View view){

@@ -61,7 +61,8 @@ public class EditActivity extends AppCompatActivity {
     String url;
     File file;
     String urlFinal;
-    String urlServer = "http://192.168.1.65/apiFotos/upload.php";
+    //String urlServer = "http://192.168.1.65/apiFotos/upload.php";
+    String urlServer = Connection.IP+"/apiFotos/upload.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +88,8 @@ public class EditActivity extends AppCompatActivity {
         txtDate.setText(getIntent().getStringExtra("date"));
         image = getIntent().getStringExtra("image");
         description.setText(getIntent().getStringExtra("description"));
-        Picasso.with(EditActivity.this).load("http://192.168.1.65/apiFotos"+image).into(img);
+        //Picasso.with(EditActivity.this).load("http://192.168.1.65/apiFotos"+image).into(img);
+        Picasso.with(EditActivity.this).load(Connection.IP+"/apiFotos"+image).into(img);
         txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

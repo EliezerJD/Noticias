@@ -55,7 +55,8 @@ public class AddActivity extends AppCompatActivity {
     Data agregar;
     Calendar calendario = Calendar.getInstance();
     ImageView img;
-    String urlServer = "http://192.168.1.65/apiFotos/upload.php";
+    //String urlServer = "http://192.168.1.65/apiFotos/upload.php";
+    String urlServer = Connection.IP+"/apiFotos/upload.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
