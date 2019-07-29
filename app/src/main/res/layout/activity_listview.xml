@@ -41,6 +41,7 @@
         android:background="@drawable/btn_green"
         android:onClick="ver"
         android:text="Ver Noticia"
+        android:textAllCaps="false"
         android:textColor="#ffffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

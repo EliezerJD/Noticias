@@ -50,7 +50,7 @@ public class AddActivity extends AppCompatActivity {
     EditText title;
     EditText txtDate;
     EditText description;
-    String url;
+    String url= null;
     File file;
     Data agregar;
     Calendar calendario = Calendar.getInstance();
@@ -101,21 +101,26 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void agregar(View view) throws IOException {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        HttpClient httpclient = new DefaultHttpClient();
-        httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-        HttpPost httppost = new HttpPost(urlServer);
-        MultipartEntity mpEntity = new MultipartEntity();
-        ContentBody foto = new FileBody(file, "image/jpeg");
-        mpEntity.addPart("fotoUp", foto);
-        httppost.setEntity(mpEntity);
-        HttpResponse response = httpclient.execute(httppost);
-        String responseBody = EntityUtils.toString(response.getEntity());
-        if(responseBody.equals("success")){
-            httpclient.getConnectionManager().shutdown();
+        if(url!=null){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            HttpClient httpclient = new DefaultHttpClient();
+            httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+            HttpPost httppost = new HttpPost(urlServer);
+            MultipartEntity mpEntity = new MultipartEntity();
+            ContentBody foto = new FileBody(file, "image/jpeg");
+            mpEntity.addPart("fotoUp", foto);
+            httppost.setEntity(mpEntity);
+            HttpResponse response = httpclient.execute(httppost);
+            String responseBody = EntityUtils.toString(response.getEntity());
+            if(responseBody.equals("success")){
+                httpclient.getConnectionManager().shutdown();
+                addNoticia();
+            }
+        }else{
             addNoticia();
         }
+
 
 
     }
@@ -160,6 +165,9 @@ public class AddActivity extends AppCompatActivity {
         agregar.setDate(txtDate.getText().toString().trim());
         System.out.println(txtDate.getText().toString().trim());
         agregar.setDescription(description.getText().toString().trim());
+        if(url==null){
+            url = "error.jpg";
+        }
         agregar.setImage("/imagenes/"+ url);
         agregar.setIdUser(sessionId);
         Retrofit retrofit = Connection.getClient();

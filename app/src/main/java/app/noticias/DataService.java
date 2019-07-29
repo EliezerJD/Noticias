@@ -13,6 +13,9 @@ public interface DataService {
     @POST("login")
     Call<Data> login(@Body Data data);
 
+    @POST("register")
+    Call<Data> register(@Body Data data);
+
     @GET("noticias")
     Call<Data> getNoticias();
 

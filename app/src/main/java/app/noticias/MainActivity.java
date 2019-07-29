@@ -109,4 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void register(View view) {
+        Intent registerScreen = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(registerScreen);
+    }
 }

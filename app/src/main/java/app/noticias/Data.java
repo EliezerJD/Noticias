@@ -18,6 +18,10 @@ public class Data {
     @Expose
     private String password;
 
+    @SerializedName("confirm_password")
+    @Expose
+    private String cpassword;
+
 
     @SerializedName("name")
     @Expose
@@ -169,5 +173,13 @@ public class Data {
 
     public void setIdUser(String idUser) {
         this.idUser = idUser;
+    }
+
+    public String getCpassword() {
+        return cpassword;
+    }
+
+    public void setCpassword(String cpassword) {
+        this.cpassword = cpassword;
     }
 }
