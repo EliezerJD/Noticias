@@ -25,9 +25,8 @@ public interface DataService {
     @PUT("noticias/del/{id}")
     Call<Data> eliminar(@Path("id") int id);
 
-
-    @DELETE("citas/{cita}")
-    Call<Data> delete(@Path("cita") int cita_id);
+    @POST("noticias")
+    Call<Data> add(@Body Data data);
 
 
 

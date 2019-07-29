@@ -67,7 +67,6 @@ public class ReporteroActivity extends AppCompatActivity {
                     listarNew();
                 }
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -146,6 +145,8 @@ public class ReporteroActivity extends AppCompatActivity {
                     noticiasPropias.add(noticiapropia);
                     listaNoticiasPropias.add(response.body().getData().get(x).getTitle() + "\n" + "\n" + response.body().getData().get(x).getDate());
                 }
+                Collections.reverse(listaNoticiasPropias);
+                Collections.reverse(noticiasPropias);
                 listar();
 
             }
@@ -164,8 +165,6 @@ public class ReporteroActivity extends AppCompatActivity {
     }
 
     public void listarNew(){
-        Collections.reverse(listaNoticiasPropias);
-        Collections.reverse(noticiasPropias);
         arrayAdapterNew= new ArrayAdapter<String>(ReporteroActivity.this, R.layout.activity_listview_new, R.id.textView, listaNoticiasPropias);
         simpleListNew.setAdapter(arrayAdapterNew);
     }
@@ -226,7 +225,6 @@ public class ReporteroActivity extends AppCompatActivity {
     public void borrar(View view) {
         View item = (View) view.getParent();
         final int pos = simpleListNew.getPositionForView(item);
-        System.out.println(pos+"");
         Retrofit retrofit = Connection.getClient();
         DataService dataService = retrofit.create(DataService.class);
         Call<Data> call = dataService.eliminar(Integer.parseInt(noticiasPropias.get(pos).getId()));
@@ -235,9 +233,10 @@ public class ReporteroActivity extends AppCompatActivity {
             public void onResponse(Call<Data> call, Response<Data> response) {
                 Toast toast1 = Toast.makeText(getApplicationContext(), "Eliminado correctamente", Toast.LENGTH_SHORT);
                 toast1.show();
+                String index = noticiasPropias.get(pos).getId();
                 noticiasPropias.remove(pos);
                 listaNoticiasPropias.remove(pos);
-                arrayAdapterNew.notifyDataSetChanged();
+                eliminardeTodos(index);
             }
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
@@ -247,5 +246,21 @@ public class ReporteroActivity extends AppCompatActivity {
     }
 
 
-
+    public void agregar(View view) {
+        Intent screen = new Intent(ReporteroActivity.this, AddActivity.class);
+        screen.putExtra("name", usernameT);
+        screen.putExtra("id", sessionId);
+        startActivity(screen);
+    }
+    private void eliminardeTodos(String id){
+        for(int x=0; x<listaNoticias.size();x++){
+            if(noticias.get(x).getId().equals(id)){
+                noticias.remove(x);
+                listaNoticias.remove(x);
+                break;
+            }
+        }
+        arrayAdapter.notifyDataSetChanged();
+        arrayAdapterNew.notifyDataSetChanged();
+    }
 }

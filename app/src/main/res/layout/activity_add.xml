@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditActivity"
+    tools:context=".AddActivity"
     android:background="@drawable/tool_green">
 
     <EditText
@@ -19,7 +19,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textCapWords"
-        android:text="Titulo"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.62"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.072" />
     <TextView
-        android:id="@+id/editarNoticias"
+        android:id="@+id/agregarNoticias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -94,7 +94,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Editar noticia"
+        android:text="Agregar noticia"
         android:textColor="#000000"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -114,8 +114,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-
-        android:text="Aquí puedes editar tu noticia."
+        android:text="Aquí puedes agregar una noticia."
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +136,7 @@
         android:ems="10"
         android:focusable="false"
         android:inputType="textPersonName"
-        android:text="Fecha"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.62"
@@ -157,7 +156,7 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textCapWords"
-        android:text="Descripcion"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.873"
@@ -243,7 +242,7 @@
         app:layout_constraintVertical_bias="0.973" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/agregar"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -253,8 +252,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_green"
-        android:onClick="confirmar"
-        android:text="Guardar"
+        android:onClick="agregar"
+        android:text="Agregar"
         android:textColor="#ffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -282,7 +281,7 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/selectImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -291,7 +290,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="editPhoto"
+        android:onClick="takePhoto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
